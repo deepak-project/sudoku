@@ -1,35 +1,40 @@
 import numpy as np
 
-num_zeros = int(input("Enter you many vacant position in sudoku you want: "))
+# num_zeros =  5
 
-def generate_sudoku(num_zeros):
-    base = np.array([
-        [1,2,3,4,5,6,7,8,9],
-        [4,5,6,7,8,9,1,2,3],
-        [7,8,9,1,2,3,4,5,6],
-        [2,3,4,5,6,7,8,9,1],
-        [5,6,7,8,9,1,2,3,4],
-        [8,9,1,2,3,4,5,6,7],
-        [3,4,5,6,7,8,9,1,2],
-        [6,7,8,9,1,2,3,4,5],
-        [9,1,2,3,4,5,6,7,8]
-    ])
+# def generate_sudoku(num_zeros):
+#     base = np.array([
+#         [1,2,3,4,5,6,7,8,9],
+#         [4,5,6,7,8,9,1,2,3],
+#         [7,8,9,1,2,3,4,5,6],
+#         [2,3,4,5,6,7,8,9,1],
+#         [5,6,7,8,9,1,2,3,4],
+#         [8,9,1,2,3,4,5,6,7],
+#         [3,4,5,6,7,8,9,1,2],
+#         [6,7,8,9,1,2,3,4,5],
+#         [9,1,2,3,4,5,6,7,8]
+#     ])
 
-    sudoku = base.copy()
+#     sudoku = base.copy()
  
-    perm = np.random.permutation(9) + 1
-    for i in range(9):
-        sudoku[sudoku == i + 1] = -perm[i]
-    sudoku = -sudoku
+#     perm = np.random.permutation(9) + 1
+#     for i in range(9):
+#         sudoku[sudoku == i + 1] = -perm[i]
+#     sudoku = -sudoku
 
-    idx = np.random.choice(81, num_zeros, replace=False)
-    sudoku.flat[idx] = 0
+#     idx = np.random.choice(81, num_zeros, replace=False)
+#     sudoku.flat[idx] = 0
 
-    return sudoku
+#     return sudoku
 
-a = generate_sudoku(num_zeros)
-
+# a = generate_sudoku(num_zeros)
+# print(a)
  
+ 
+
+
+
+
 
 def check_matrix(a):
     for i in range(9):
