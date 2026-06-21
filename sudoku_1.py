@@ -1,41 +1,5 @@
 import numpy as np
 
-# num_zeros =  5
-
-# def generate_sudoku(num_zeros):
-#     base = np.array([
-#         [1,2,3,4,5,6,7,8,9],
-#         [4,5,6,7,8,9,1,2,3],
-#         [7,8,9,1,2,3,4,5,6],
-#         [2,3,4,5,6,7,8,9,1],
-#         [5,6,7,8,9,1,2,3,4],
-#         [8,9,1,2,3,4,5,6,7],
-#         [3,4,5,6,7,8,9,1,2],
-#         [6,7,8,9,1,2,3,4,5],
-#         [9,1,2,3,4,5,6,7,8]
-#     ])
-
-#     sudoku = base.copy()
- 
-#     perm = np.random.permutation(9) + 1
-#     for i in range(9):
-#         sudoku[sudoku == i + 1] = -perm[i]
-#     sudoku = -sudoku
-
-#     idx = np.random.choice(81, num_zeros, replace=False)
-#     sudoku.flat[idx] = 0
-
-#     return sudoku
-
-# a = generate_sudoku(num_zeros)
-# print(a)
- 
- 
-
-
-
-
-
 def check_matrix(a):
     for i in range(9):
       for j in range(9):
@@ -53,8 +17,8 @@ def check_matrix(a):
              pass
 
            else:
-            print("You enter the worng number")
-            return 
+             
+            return 0
            
     for i in range(9):
       for j in range(9):
@@ -72,8 +36,8 @@ def check_matrix(a):
              pass
 
            else:
-            print("You enter the worng number")
-            return 
+              
+            return 0
            
     for p in [0,3,6]:
       for q in [0,3,6]:
@@ -94,15 +58,55 @@ def check_matrix(a):
                   pass
 
                 else:
-                   print("You enter the worng number")
-                   return 
+                    
+                   return 0
     
-    return 1       
-     
+    return 1        
+
+
+
+
+Exit = 0
+while Exit == 0:
+  s = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  b = np.random.permutation(s.ravel()) 
+  c = np.roll(b, -1)
+  d = np.roll(b, -2)
+  e = np.roll(b, -3)
+  f = np.roll(b, -4)
+  g = np.roll(b, -5)
+  h = np.roll(b, -6)
+  r = np.roll(b, -7)
+  s = np.roll(b, -8)
+  t = np.roll(b, -9)
+  row_list = [c, d, e, f, g, h, r, s, t]
+  np.random.shuffle(row_list)
+  base = np.vstack(row_list)
+  Exit = check_matrix(base)
  
+
+
+num_zeros = int(input("Enter you many vacant position in sudoku you want: "))
+
+def generate_sudoku(num_zeros):
+
+    sudoku = base.copy()
  
- 
- 
+    perm = np.random.permutation(9) + 1
+    for i in range(9):
+        sudoku[sudoku == i + 1] = -perm[i]
+    sudoku = -sudoku
+
+    idx = np.random.choice(81, num_zeros, replace=False)
+    sudoku.flat[idx] = 0
+
+    return sudoku
+
+a = generate_sudoku(num_zeros)
+
+
+
+
 zero = np.sum(a == 0) 
  
 while zero != 0:
@@ -117,6 +121,7 @@ while zero != 0:
     zero = zero - 1
   else:
     a[i-1,j-1] = 0
+    print("You enter the worng number! Try again")
 
     
 print("Congralustion! You Sloved The Game")
