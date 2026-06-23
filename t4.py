@@ -86,7 +86,8 @@ while Exit == 0:
  
 
 
-num_zeros = int(input("Enter you many vacant position in sudoku you want: "))
+# num_zeros = int(input("Enter you many vacant position in sudoku you want: "))
+num_zeros = 1
 
 def generate_sudoku(num_zeros):
 
@@ -105,24 +106,32 @@ def generate_sudoku(num_zeros):
 a = generate_sudoku(num_zeros)
 
 
+def sudoku_slover(a):
+    for i in range(9):
+        rows = a[[i], : ]
+
+        if np.sum(rows == 0) == 1 :
+            for j in range(9):
+                if np.sum(rows == j) == 1:
+                    rows[rows == 0] == j
+
+    
+            
+    for i in range(9):
+        coul = a[ :, [i]]
+
+        if np.sum(coul == 0) == 1 :
+            for j in range(9):
+                if np.sum(coul == j) == 1:
+                    coul[coul == 0] == j
+
+                 
 
 
-zero = np.sum(a == 0) 
+matrix = sudoku_slover(a)
+
+print(a)
  
-while zero != 0:
-  print(a)
-  z = int(input('Enter your number: '))
-  i = int(input("Enter your row number: "))
-  j = int(input('Enter your column number: '))
-  a[i-1,j-1] = z
-  b = check_matrix(a)
-
-  if b == 1:
-    zero = zero - 1
-  else:
-    a[i-1,j-1] = 0
-    print("You enter the worng number! Try again")
-
     
 
 

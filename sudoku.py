@@ -49,7 +49,7 @@ def check_matrix(a):
 
            else:
             print("You enter the worng number")
-            return 
+            return 0
            
     for i in range(9):
       for j in range(9):
@@ -68,7 +68,7 @@ def check_matrix(a):
 
            else:
             print("You enter the worng number")
-            return 
+            return 0
            
     for p in [0,3,6]:
       for q in [0,3,6]:
@@ -90,7 +90,7 @@ def check_matrix(a):
 
                 else:
                    print("You enter the worng number")
-                   return 
+                   return 0
     
     return 1       
      
